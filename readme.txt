@@ -2,18 +2,18 @@ This is a program that takes json raws with real-life data values and outputs th
 
 {
 	"Lithium": {
-		"name": "Lithium"
-		"young's modulus": 4.9 # This is in GPa
-		"bulk modulus": 11
-		"shear modulus": 4.2
-		"ultimate tensile strength": 15 # In MPa
-		"spec heat": 3.560 # Joules per grams*Celsius
-		"melting point": 357 #fahrenheit
-		"boiling point": 2447
-		"color": "GRAY" #DF colors, must be uppercase
-		"value": 1
-		"solid density": 0.534 #g/ml
-		"liquid density": 0.512
+		"name": "Lithium",
+		"young's modulus": 4.9, # This is in GPa
+		"bulk modulus": 11,
+		"shear modulus": 4.2,
+		"ultimate tensile strength": 15, # In MPa
+		"spec heat": 3.560, # Joules per grams*Celsius
+		"melting point": 357, #fahrenheit
+		"boiling point": 2447,
+		"color": "GRAY", #DF colors, must be uppercase
+		"value": 1,
+		"solid density": 0.534, #g/ml
+		"liquid density": 0.512,
 		"molar mass": 6.941 #g/mole
 	}
 }
