@@ -22,7 +22,7 @@ class Material:
         self.molar_mass=int(dict['molar mass']*1000)
     def get_elasticity(self,num,type='shear'):
         if type=='young':
-            return int((self.tensile_yield*1000)/(self.young_modulus*10000)) # 10^5 is arbitrary to DF, but 10^9 is to convert to pascals
+            return int((self.tensile_yield*1000)/(self.young_modulus*10000)) # Ratio in constant multiplicands entirely based on arbitrary DF stuff 
         elif type=='bulk':
             return int((self.tensile_yield*3500)/(self.bulk_modulus*10000))
         else:
