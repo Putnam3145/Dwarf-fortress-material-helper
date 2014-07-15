@@ -21,14 +21,12 @@ class Material:
         self.liquid_density=int(dict['liquid density']*1000)
         self.molar_mass=int(dict['molar mass']*1000)
     def get_elasticity(self,num,type='shear'):
-        """strain_at_yield = yield_stress/Young’s modulus
-		both units are in pascals"""
         if type=='young':
-            return int((self.tensile_yield*1000/self.young_modulus*1000000000)*100000) # 10^5 is arbitrary to DF, but 10^9 is to convert to pascals
+            return int((self.tensile_yield*1000)/(self.young_modulus*10000)) # 10^5 is arbitrary to DF, but 10^9 is to convert to pascals
         elif type=='bulk':
-            return int((self.tensile_yield*3500/self.bulk_modulus*1000000000)*100000)
+            return int((self.tensile_yield*3500)/(self.bulk_modulus*10000))
         else:
-            return int((self.tensile_yield*1000/self.shear_modulus*1000000000)*100000)
+            return int((self.tensile_yield*1000)/(self.shear_modulus*10000))
     def uristize(self,temp):
         return temp+9968
     def temp_name(self,state):
