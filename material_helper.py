@@ -9,9 +9,9 @@ class Material:
         self.bulk_modulus=dict["bulk modulus"]
         self.shear_modulus=dict["shear modulus"]
         self.tensile_yield=int(dict['ultimate tensile strength']*1000)
-        self.tensile_elasticity=self.magic_math(self.young_modulus,'young')
-        self.compressive_elasticity=self.magic_math(self.bulk_modulus,'bulk')
-        self.shear_elasticity=self.magic_math(self.shear_modulus)
+        self.tensile_elasticity=self.get_elasticity(self.young_modulus,'young')
+        self.compressive_elasticity=self.get_elasticity(self.bulk_modulus,'bulk')
+        self.shear_elasticity=self.get_elasticity(self.shear_modulus)
         self.spec_heat=int(dict['spec heat']*1000)
         self.melting_point=self.uristize(dict['melting point'])
         self.boiling_point=self.uristize(dict['boiling point'])
@@ -20,16 +20,15 @@ class Material:
         self.solid_density=int(dict['solid density']*1000)
         self.liquid_density=int(dict['liquid density']*1000)
         self.molar_mass=int(dict['molar mass']*1000)
-    def magic_math(self,num,type='shear'):
-        """This function takes a number and maths it to make it usable in DF.
-        I made a math that inversely relates modulus in GPa to in-game values.
-        It works with iron and nothing else in-game. Wee."""
+    def get_elasticity(self,num,type='shear'):
+        """strain_at_yield = yield_stress/Young’s modulus
+		both units are in pascals"""
         if type=='young':
-            return int(15403/num) #magic number #1: whatever's required for iron to fit
+            return int((self.tensile_yield*1000/self.young_modulus*1000000000)*100000) # 10^5 is arbitrary to DF, but 10^9 is to convert to pascals
         elif type=='bulk':
-            return int(54230/num) #magic number #2: see #1
+            return int((self.tensile_yield*3500/self.bulk_modulus*1000000000)*100000)
         else:
-            return int(15498/num) #magic number #3: see #2
+            return int((self.tensile_yield*1000/self.shear_modulus*1000000000)*100000)
     def uristize(self,temp):
         return temp+9968
     def temp_name(self,state):
