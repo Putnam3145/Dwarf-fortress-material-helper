@@ -22,11 +22,11 @@ class Material:
         self.molar_mass=int(dict['molar mass']*1000)
     def get_elasticity(self,num,type='shear'):
         if type=='young':
-            return int((self.tensile_yield*1000)/(self.young_modulus*10000)) # Ratio in constant multiplicands entirely based on arbitrary DF stuff 
+            return int((self.tensile_yield)/(self.young_modulus*10)) # Ratio in constant multiplicands entirely based on arbitrary DF stuff 
         elif type=='bulk':
-            return int((self.tensile_yield*3500)/(self.bulk_modulus*10000))
+            return int((self.tensile_yield*3.5)/(self.bulk_modulus*10))
         else:
-            return int((self.tensile_yield*1000)/(self.shear_modulus*10000))
+            return int((self.tensile_yield)/(self.shear_modulus*10))
     def uristize(self,temp):
         return temp+9968
     def temp_name(self,state):
