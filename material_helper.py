@@ -87,9 +87,17 @@ def decode_json_file(json_file_name):
     json_file = open(json_file_name,'r')
     return json.load(json_file)
 
-JSONMats = decode_json_file('mats.json')
+JSONMats = None
+
+try:
+    JSONMats = decode_json_file('mats.json')
+except(ValueError):
+    raw_input("JSON malformed! Check your JSON at http://jsonformatter.curiousconcept.com/.\nPress enter to continue.")
 
 output=open('materials.txt','a')
 
 for mat in JSONMats:
+        print('Parsing ' + mat + '...')
         output.write(Material(JSONMats[mat]).rawify()+'\n\n')
+
+raw_input('All done! Your raws are now in materials.txt.')
