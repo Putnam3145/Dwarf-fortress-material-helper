@@ -49,7 +49,7 @@ class Material:
         return "0:7:1" #probably something better later
     def rawify(self):
         return ("[INORGANIC:"+self.name.upper()+"]\n"
-                "    [USE_MATERIAL_TEMPLATE:METAL_TEMPLATE\n"
+                "    [USE_MATERIAL_TEMPLATE:METAL_TEMPLATE]\n"
                 "    [STATE_NAME_ADJ:ALL_SOLID:"+self.temp_name('solid')+"]\n"
                 "    [STATE_NAME_ADJ:LIQUID:"+self.temp_name('liquid')+"]\n"
                 "    [STATE_NAME_ADJ:GAS:"+self.temp_name('gas')+"]\n"
