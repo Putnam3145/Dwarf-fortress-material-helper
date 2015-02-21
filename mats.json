@@ -1,3 +1,17 @@
 {
-
+	"Lithium": {
+		"name": "Lithium",
+		"young's modulus": 4.9,
+		"bulk modulus": 11,
+		"shear modulus": 4.2,
+		"ultimate tensile strength": 15,
+		"spec heat": 3.560,
+		"melting point": 357,
+		"boiling point": 2447,
+		"color": "GRAY",
+		"value": 1,
+		"solid density": 0.534,
+		"liquid density": 0.512,
+		"molar mass": 6.941
+	}
 }
